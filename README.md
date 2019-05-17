@@ -27,7 +27,7 @@ You can test the application locally by running the PyTest Unit test suite (whic
 in Jenkins or some other CI tool would use):
 
 ```bash
-$ python -m pytest tests/test_app.py
+$ python -m pytest tests/
 ```
 
 ## Usage

@@ -5,16 +5,23 @@ pipeline {
 
     stages {
         stage('Build Information') {
-            echo 'Printing build information...'
-            echo "Build ID: ${BUILD_ID}"
+            steps {
+                echo 'Printing build information...'
+                echo "Build ID: ${BUILD_ID}"
+            }
         }
 
         stage('Run Tests') {
-            echo 'Running tests...'
+            steps {
+                echo 'Running tests...'
+                sh 'python -m pytest tests/'
+            }
         }
 
         stage('Run Tests') {
-            echo 'Aggregating test result information...'
+            steps {
+              echo 'Aggregating test result information...'
+            }
         }
     }
 }
