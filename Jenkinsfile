@@ -18,7 +18,7 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+        stage('Aggregate Results') {
             steps {
               echo 'Aggregating test result information...'
             }
