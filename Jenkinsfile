@@ -1,6 +1,9 @@
 pipeline {
     agent {
-        docker { label 'docker-python' }
+        docker {
+            image 'jenkins/ssh-slave'
+            label 'docker-python'
+        }
     }
 
     stages {
@@ -14,6 +17,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 echo 'Running tests...'
+                sh '
                 sh 'python -m pytest tests/'
             }
         }
