@@ -17,7 +17,6 @@ pipeline {
         stage('Run Tests') {
             steps {
                 echo 'Running tests...'
-                sh '
                 sh 'python -m pytest tests/'
             }
         }
