@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'jenkins/ssh-slave'
-            label 'docker-python'
-        }
-    }
+    agent any
 
     stages {
         stage('Build Information') {
