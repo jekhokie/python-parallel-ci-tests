@@ -11,7 +11,7 @@ pipeline {
 
         stage('Run Tests') {
             parallel {
-                stage('Test Suite 1') {
+                stage('Suite 1') {
                     agent { label 'docker-python' }
 
                     stages {
@@ -27,18 +27,18 @@ pipeline {
                         }
                         stage('Run Tests') {
                             steps {
-                                sh 'python -m pytest tests/test_app_job_id1.py'
+                                sh 'python -m pytest --junitxml suite-results.xml tests/test_app_job_id1.py'
                             }
                             post {
                                 always {
-                                    stash includes: '**', name: 'test-suite-1'
+                                    stash includes: 'suite-results.xml', name: 'test-suite-1'
                                 }
                             }
                         }
                     }
                 }
 
-                stage('Test Suite 2') {
+                stage('Suite 2') {
                     agent { label 'docker-python' }
 
                     stages {
@@ -54,18 +54,43 @@ pipeline {
                         }
                         stage('Run Tests') {
                             steps {
-                                sh 'python -m pytest tests/test_app_job_id2.py'
+                                sh 'python -m pytest --junitxml suite-results.xmltests/test_app_job_id2.py'
                             }
                             post {
                                 always {
-                                    stash includes: '**', name: 'test-suite-2'
+                                    stash includes: 'suite-results.xml', name: 'test-suite-2'
                                 }
                             }
                         }
                     }
                 }
-                //sh 'python -m pytest tests/test_app_job_id2.py'
-                //sh 'python -m pytest tests/test_app_no_jobid.py'
+
+                stage('Suite 3') {
+                    agent { label 'docker-python' }
+
+                    stages {
+                        stage("Set up directory...") {
+                            steps {
+                                echo 'Running tests for Test Suite 3...'
+                                echo 'Running tests on:'
+                                sh 'hostname -f'
+                                sh 'virtualenv .env'
+                                sh '. .env/bin/activate'
+                                sh 'pip install -r requirements.txt'
+                            }
+                        }
+                        stage('Run Tests') {
+                            steps {
+                                sh 'python -m pytest --junitxml suite-results.xml tests/test_app_no_jobid.py'
+                            }
+                            post {
+                                always {
+                                    stash includes: 'suite-results.xml', name: 'test-suite-3'
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
