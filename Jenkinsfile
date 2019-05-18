@@ -14,10 +14,8 @@ pipeline {
                 stage('Test Suite 1') {
                     steps {
                         echo 'Running tests for Test Suite 1...'
-                        echo 'Cleanup...'
-                        sh 'rm build/*'
-
-                        echo 'Running tests...'
+                        echo 'Running tests on:'
+                        sh 'hostname -f'
                         sh 'virtualenv .env'
                         sh '. .env/bin/activate'
                         sh 'pip install -r requirements.txt'
@@ -33,10 +31,8 @@ pipeline {
                 stage('Test Suite 2') {
                     steps {
                         echo 'Running tests for Test Suite 2...'
-                        echo 'Cleanup...'
-                        sh 'rm build/*'
-
-                        echo 'Running tests...'
+                        echo 'Running tests on:'
+                        sh 'hostname -f'
                         sh 'virtualenv .env'
                         sh '. .env/bin/activate'
                         sh 'pip install -r requirements.txt'
@@ -52,10 +48,8 @@ pipeline {
                 stage('Test Suite 3') {
                     steps {
                         echo 'Running tests for Test Suite 3...'
-                        echo 'Cleanup...'
-                        sh 'rm build/*'
-
-                        echo 'Running tests...'
+                        echo 'Running tests on:'
+                        sh 'hostname -f'
                         sh 'virtualenv .env'
                         sh '. .env/bin/activate'
                         sh 'pip install -r requirements.txt'
