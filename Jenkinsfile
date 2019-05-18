@@ -23,15 +23,16 @@ pipeline {
                                 sh 'virtualenv .env'
                                 sh '. .env/bin/activate'
                                 sh 'pip install -r requirements.txt'
+                                sh 'mkdir build'
                             }
                         }
                         stage('Run Tests') {
                             steps {
-                                sh 'python -m pytest --junitxml suite-results-1.xml tests/test_app_job_id1.py'
+                                sh 'python -m pytest --junitxml build/suite-results-1.xml tests/test_app_job_id1.py'
                             }
                             post {
                                 always {
-                                    stash includes: 'suite-results-1.xml', name: 'test-suite-1'
+                                    stash includes: 'build/**', name: 'test-suite-1'
                                 }
                             }
                         }
@@ -50,15 +51,16 @@ pipeline {
                                 sh 'virtualenv .env'
                                 sh '. .env/bin/activate'
                                 sh 'pip install -r requirements.txt'
+                                sh 'mkdir build'
                             }
                         }
                         stage('Run Tests') {
                             steps {
-                                sh 'python -m pytest --junitxml suite-results-2.xml tests/test_app_job_id2.py'
+                                sh 'python -m pytest --junitxml build/suite-results-2.xml tests/test_app_job_id2.py'
                             }
                             post {
                                 always {
-                                    stash includes: 'suite-results-2.xml', name: 'test-suite-2'
+                                    stash includes: 'build/**', name: 'test-suite-2'
                                 }
                             }
                         }
@@ -77,15 +79,16 @@ pipeline {
                                 sh 'virtualenv .env'
                                 sh '. .env/bin/activate'
                                 sh 'pip install -r requirements.txt'
+                                sh 'mkdir build'
                             }
                         }
                         stage('Run Tests') {
                             steps {
-                                sh 'python -m pytest --junitxml suite-results-3.xml tests/test_app_no_jobid.py'
+                                sh 'python -m pytest --junitxml build/suite-results-3.xml tests/test_app_no_jobid.py'
                             }
                             post {
                                 always {
-                                    stash includes: 'suite-results-3.xml', name: 'test-suite-3'
+                                    stash includes: 'build/**', name: 'test-suite-3'
                                 }
                             }
                         }
