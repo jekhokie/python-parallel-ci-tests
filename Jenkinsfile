@@ -12,7 +12,6 @@ pipeline {
         stage('Run Tests') {
             parallel {
                 stage('Test Suite 1') {
-                    agent { label 'docker-python-1' }
                     steps {
                         echo 'Running tests for Test Suite 1...'
                         echo 'Running tests on:'
@@ -30,7 +29,6 @@ pipeline {
                 }
 
                 stage('Test Suite 2') {
-                    agent { label 'docker-python-2' }
                     steps {
                         echo 'Running tests for Test Suite 2...'
                         echo 'Running tests on:'
@@ -48,7 +46,6 @@ pipeline {
                 }
 
                 stage('Test Suite 3') {
-                    agent { label 'docker-python-3' }
                     steps {
                         echo 'Running tests for Test Suite 3...'
                         echo 'Running tests on:'
