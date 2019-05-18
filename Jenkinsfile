@@ -54,7 +54,7 @@ pipeline {
                         }
                         stage('Run Tests') {
                             steps {
-                                sh 'python -m pytest --junitxml suite-results.xmltests/test_app_job_id2.py'
+                                sh 'python -m pytest --junitxml suite-results.xml tests/test_app_job_id2.py'
                             }
                             post {
                                 always {
