@@ -4,6 +4,9 @@ This project is intended to enable development of a CI pipeline to design and te
 using Docker (or other agents) and aggregating the results in a Jenkins pipeline. The idea is to provide
 a framework for splitting massive tests into smaller test agents to speed up feedback timings.
 
+This repository contains the material to accompany the blog post
+[Parallelized Jenkins Jobs using Docker](https://jekhokie.github.io/ci/cd/jenkins/virtualbox/vm/infrastructure/docker/ansible/parallel/2019/05/16/parallelized-jenkins-docker-tests.html).
+
 ## Prerequisites
 
 Install easy_install, pip and virtualenv. Then, clone this repository and navigate to this example:
@@ -38,7 +41,7 @@ To start the Flask application, simply run the `run.py` script:
 $ python run.py
 ```
 
-You can now open a browser and navigate to h`ttp://<SERVER_IP>:8000/?job_id=5` to see the Hello World Flask
+You can now open a browser and navigate to `http://<SERVER_IP>:8000/?job_id=5` to see the Hello World Flask
 basic website which shows the "job_id" passed in the URL.
 
 ## Docker
