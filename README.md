@@ -41,6 +41,17 @@ $ python run.py
 You can now open a browser and navigate to h`ttp://<SERVER_IP>:8000/?job_id=5` to see the Hello World Flask
 basic website which shows the "job_id" passed in the URL.
 
+## Docker
+
+There is a Dockerfile within the repository which bakes the Python tools required for this repository to work
+with a Jenkins Docker slave image. You can build the Docker image like so:
+
+```bash
+$ docker build -t jenkins/ssh-slave-modified .
+```
+
+Once the build completes, run the command `docker image ls` and you should see your new image in place.
+
 ## License
 
 All content within created by the author are licensed under the LICENSE.txt contents unless specified otherwise.
