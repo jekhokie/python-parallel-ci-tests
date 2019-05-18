@@ -27,11 +27,11 @@ pipeline {
                         }
                         stage('Run Tests') {
                             steps {
-                                sh 'python -m pytest --junitxml suite-results.xml tests/test_app_job_id1.py'
+                                sh 'python -m pytest --junitxml suite-results-1.xml tests/test_app_job_id1.py'
                             }
                             post {
                                 always {
-                                    stash includes: 'suite-results.xml', name: 'test-suite-1'
+                                    stash includes: 'suite-results-1.xml', name: 'test-suite-1'
                                 }
                             }
                         }
@@ -54,11 +54,11 @@ pipeline {
                         }
                         stage('Run Tests') {
                             steps {
-                                sh 'python -m pytest --junitxml suite-results.xml tests/test_app_job_id2.py'
+                                sh 'python -m pytest --junitxml suite-results-2.xml tests/test_app_job_id2.py'
                             }
                             post {
                                 always {
-                                    stash includes: 'suite-results.xml', name: 'test-suite-2'
+                                    stash includes: 'suite-results-2.xml', name: 'test-suite-2'
                                 }
                             }
                         }
@@ -81,11 +81,11 @@ pipeline {
                         }
                         stage('Run Tests') {
                             steps {
-                                sh 'python -m pytest --junitxml suite-results.xml tests/test_app_no_jobid.py'
+                                sh 'python -m pytest --junitxml suite-results-3.xml tests/test_app_no_jobid.py'
                             }
                             post {
                                 always {
-                                    stash includes: 'suite-results.xml', name: 'test-suite-3'
+                                    stash includes: 'suite-results-3.xml', name: 'test-suite-3'
                                 }
                             }
                         }
