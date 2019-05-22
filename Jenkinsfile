@@ -15,6 +15,12 @@ pipeline {
                     agent { label 'docker-python' }
 
                     stages {
+                        stage('Initialize Database...') {
+                            steps {
+                                currentBuild.result = 'FAILURE'
+                                return
+                            }
+                        }
                         stage("Set up directory...") {
                             steps {
                                 echo 'Running tests for Test Suite 1...'
@@ -26,7 +32,7 @@ pipeline {
                                 sh 'mkdir build'
                             }
                         }
-                        stage('Run Tests') {
+                        stage('Run Tests'...) {
                             steps {
                                 sh 'python -m pytest --junitxml build/suite-results-1.xml tests/test_app_job_id1.py'
                             }
@@ -39,6 +45,7 @@ pipeline {
                     }
                 }
 
+/*
                 stage('Suite 2') {
                     agent { label 'docker-python' }
 
@@ -54,7 +61,7 @@ pipeline {
                                 sh 'mkdir build'
                             }
                         }
-                        stage('Run Tests') {
+                        stage('Run Tests...') {
                             steps {
                                 sh 'python -m pytest --junitxml build/suite-results-2.xml tests/test_app_job_id2.py'
                             }
@@ -82,7 +89,7 @@ pipeline {
                                 sh 'mkdir build'
                             }
                         }
-                        stage('Run Tests') {
+                        stage('Run Tests...') {
                             steps {
                                 sh 'python -m pytest --junitxml build/suite-results-3.xml tests/test_app_no_jobid.py'
                             }
@@ -94,6 +101,7 @@ pipeline {
                         }
                     }
                 }
+*/
             }
         }
 
