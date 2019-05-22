@@ -31,7 +31,7 @@ pipeline {
                                 sh "exit 1"
                             }
                         }
-                        stage("Set up directory...") {
+                        stage('Set up directory...') {
                             steps {
                                 echo 'Running tests for Test Suite 1...'
                                 echo 'Running tests on:'
@@ -42,7 +42,7 @@ pipeline {
                                 sh 'mkdir build'
                             }
                         }
-                        stage('Run Tests'...) {
+                        stage('Run Tests...') {
                             steps {
                                 sh 'python -m pytest --junitxml build/suite-results-1.xml tests/test_app_job_id1.py'
                             }
@@ -60,7 +60,7 @@ pipeline {
                     agent { label 'docker-python' }
 
                     stages {
-                        stage("Set up directory...") {
+                        stage('Set up directory...') {
                             steps {
                                 echo 'Running tests for Test Suite 2...'
                                 echo 'Running tests on:'
@@ -88,7 +88,7 @@ pipeline {
                     agent { label 'docker-python' }
 
                     stages {
-                        stage("Set up directory...") {
+                        stage('Set up directory...') {
                             steps {
                                 echo 'Running tests for Test Suite 3...'
                                 echo 'Running tests on:'
