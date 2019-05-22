@@ -4,10 +4,6 @@ def mysqlDBs = [ "10.11.13.40",
 pipeline {
     agent { label 'docker-python' }
 
-    environment {
-        // must have as many databases as parallel build jobs that depend on them
-    }
-
     stages {
         stage('Build Information') {
             steps {
