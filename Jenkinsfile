@@ -23,7 +23,7 @@ pipeline {
                     stages {
                         stage('Initialize Database...') {
                             steps {
-                                dbConnection = mysqlDBs[env.STAGE_RUN]
+                                def dbConnection = mysqlDBs[env.STAGE_RUN]
                                 echo "MYSQL DB: ${dbConnection}"
                                 sh "exit 1"
                             }
