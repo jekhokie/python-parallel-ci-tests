@@ -21,7 +21,6 @@ pipeline {
                         stage('Initialize Database...') {
                             steps {
                                 echo "MYSQL DB: ${mysqlDBs[0]}"
-                                currentBuild.result = 'FAILURE'
                                 sh "exit 1"
                             }
                         }
