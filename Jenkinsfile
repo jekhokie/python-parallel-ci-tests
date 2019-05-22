@@ -1,13 +1,11 @@
+def mysqlDBs = [ "10.11.13.40",
+                 "10.11.13.50",
+                 "10.11.13.60" ]
 pipeline {
     agent { label 'docker-python' }
 
     environment {
         // must have as many databases as parallel build jobs that depend on them
-        MYSQL_DBS = [
-            "10.11.13.40",
-            "10.11.13.50",
-            "10.11.13.60"
-        ]
     }
 
     stages {
@@ -26,7 +24,7 @@ pipeline {
                     stages {
                         stage('Initialize Database...') {
                             steps {
-                                echo "$env.MYSQL_DBS"
+                                echo "MYSQL DB: ${mysqlDBs[0]}"
                                 currentBuild.result = 'FAILURE'
                                 sh "exit 1"
                             }
