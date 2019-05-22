@@ -18,13 +18,13 @@ pipeline {
                     agent { label 'docker-python' }
                     environment {
                         STAGE_RUN = 0
-                        MYSQL_DB = mysqlDBs[STAGE_RUN]
                     }
 
                     stages {
                         stage('Initialize Database...') {
                             steps {
-                                echo "MYSQL DB: ${env.MYSQL_DB}"
+                                dbConnection = mysqlDBs[env.STAGE_RUN]
+                                echo "MYSQL DB: ${dbConnection}"
                                 sh "exit 1"
                             }
                         }
