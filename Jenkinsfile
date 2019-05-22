@@ -16,11 +16,15 @@ pipeline {
             parallel {
                 stage('Suite 1') {
                     agent { label 'docker-python' }
+                    environment {
+                        STAGE_RUN = 0
+                        MYSQL_DB = mysqlDBs[STAGE_RUN]
+                    }
 
                     stages {
                         stage('Initialize Database...') {
                             steps {
-                                echo "MYSQL DB: ${mysqlDBs[0]}"
+                                echo "MYSQL DB: ${env.MYSQL_DB}"
                                 sh "exit 1"
                             }
                         }
