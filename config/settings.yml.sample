@@ -1,0 +1,5 @@
+db_host: 10.11.13.40
+db_port: 3306
+db_name: testdb
+db_user: remote_user
+db_pass: remote_user_pass

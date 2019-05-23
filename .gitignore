@@ -8,3 +8,6 @@
 # ignore the vim swap files
 *.swp
 *.swo
+
+# ignore configuration settings
+config/settings.yml

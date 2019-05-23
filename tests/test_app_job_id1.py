@@ -12,3 +12,5 @@ def test_root(client):
     res = client.get('/?job_id=1')
     assert b'Hello World' in res.data
     assert b'Job ID: 1' in res.data
+    assert b'original data' in res.data
+    assert b'new data' not in res.data
