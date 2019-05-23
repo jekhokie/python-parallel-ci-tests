@@ -29,6 +29,7 @@ pipeline {
                                         /bin/echo Snapshots available:                              && \
                                         /usr/bin/sudo /sbin/zfs list -t snapshot                    && \
                                         /usr/bin/sudo /usr/sbin/service mysql stop                  && \
+                                        /usr/bin/sudo /usr/sbin/service mysql status                && \
                                         /usr/bin/sudo /sbin/zfs rollback mysql/datafiles@snapshot1  && \
                                         /usr/bin/sudo /usr/sbin/service mysql start                 && \
                                         exit
