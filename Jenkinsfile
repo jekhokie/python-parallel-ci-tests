@@ -25,13 +25,21 @@ pipeline {
                                 echo "MYSQL DB: ${mysqlDBs[0]}"
                                 sh """
                                     /usr/bin/ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no jenkins@${mysqlDBs[0]} << EOF
-                                        /bin/echo Resetting MySQL on: $hostname                     && \
                                         /bin/echo Snapshots available:                              && \
                                         /usr/bin/sudo /sbin/zfs list -t snapshot                    && \
+
+                                        /bin/echo Stopping MySQL...
                                         /usr/bin/sudo /usr/sbin/service mysql stop                  && \
                                         /usr/bin/sudo /usr/sbin/service mysql status                && \
+                                        /bin/echo MySQL stopped.                                    && \
+
+                                        /bin/echo Rolling back database to last snapshot...         && \
                                         /usr/bin/sudo /sbin/zfs rollback mysql/datafiles@snapshot1  && \
+                                        /bin/echo Database rolled back.                             && \
+
+                                        /bin/echo Starting MySQL...                                 && \
                                         /usr/bin/sudo /usr/sbin/service mysql start                 && \
+                                        /bin/echo MySQL started.                                    && \
                                         exit
 EOF
                                 """
