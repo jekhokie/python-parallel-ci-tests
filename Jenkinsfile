@@ -42,7 +42,6 @@ pipeline {
                                         exit
 EOF
                                 """
-                                sh "exit 1"
                             }
                         }
                         stage('Set up directory...') {
