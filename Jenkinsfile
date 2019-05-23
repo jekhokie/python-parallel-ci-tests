@@ -26,7 +26,7 @@ pipeline {
                                 sh """
                                     /usr/bin/ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no jenkins@${mysqlDBs[0]} && \
                                     echo 'here' && \
-                                    echo hostname && \
+                                    echo $hostname && \
                                     exit
                                 """
                                 sh "exit 1"
