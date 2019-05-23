@@ -30,9 +30,6 @@ pipeline {
 
                                         /bin/echo Stopping MySQL...                                 && \
                                         /usr/bin/sudo /usr/sbin/service mysql stop                  && \
-                                        /bin/echo Broken 1...                                 && \
-                                        /usr/bin/sudo /usr/sbin/service mysql status                && \
-                                        /bin/echo Broken 2...                                 && \
                                         /bin/echo MySQL stopped.                                    && \
 
                                         /bin/echo Rolling back database to last snapshot...         && \
