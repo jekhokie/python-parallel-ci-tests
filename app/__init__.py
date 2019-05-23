@@ -1,3 +1,6 @@
+# launches Python Flask application to serve a sample web page that
+# displays content from a MySQL database
+
 import os
 from flask import Flask, request, app
 import socket
