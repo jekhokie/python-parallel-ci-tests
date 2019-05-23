@@ -38,8 +38,7 @@ pipeline {
 
                                         /bin/echo Starting MySQL...                                 && \
                                         /usr/bin/sudo /usr/sbin/service mysql start                 && \
-                                        /bin/echo MySQL started.                                    && \
-                                        exit
+                                        /bin/echo MySQL started.
 EOF
                                 """
                             }
