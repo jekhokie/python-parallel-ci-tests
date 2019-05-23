@@ -67,7 +67,6 @@ EOF
                     }
                 }
 
-/*
                 stage('Suite 2') {
                     agent { label 'docker-python' }
 
@@ -123,7 +122,6 @@ EOF
                         }
                     }
                 }
-*/
             }
         }
 
