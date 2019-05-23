@@ -7,11 +7,20 @@ import socket
 import mysql.connector
 import yaml
 
-# import configuration settings
 app = Flask(__name__)
+
+# import configuration settings or defaults if none exists
+config = {}
 cfg_file = os.path.join('config', 'settings.yml')
-with open(cfg_file) as yml:
-    config = yaml.load(yml, Loader=yaml.FullLoader)
+if cfg_file.is_file():
+    with open(cfg_file) as yml:
+        config = yaml.load(yml, Loader=yaml.FullLoader)
+else:
+    config['db_host'] = '10.11.13.40'
+    config['db_port'] = '3306'
+    config['db_user'] = 'testdb'
+    config['db_pass'] = 'remote_user'
+    config['db_name'] = 'remote_user_pass'
 
 # create initial sql connector
 db_conn = mysql.connector.connect(
