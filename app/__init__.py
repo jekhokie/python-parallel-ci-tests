@@ -12,7 +12,7 @@ app = Flask(__name__)
 # import configuration settings or defaults if none exists
 config = {}
 cfg_file = os.path.join('config', 'settings.yml')
-if cfg_file.is_file():
+if os.path.isfile(cfg_file):
     with open(cfg_file) as yml:
         config = yaml.load(yml, Loader=yaml.FullLoader)
 else:
