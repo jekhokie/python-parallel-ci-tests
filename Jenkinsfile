@@ -19,8 +19,14 @@ pipeline {
 
                     stages {
                         stage('Initialize Database...') {
+                            agent { label 'master' }
+
                             steps {
                                 echo "MYSQL DB: ${mysqlDBs[0]}"
+                                sh """
+                                    /usr/bin/ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no jenkins@${mysqlDBs[0]}
+                                    echo hostname
+                                """
                                 sh "exit 1"
                             }
                         }
