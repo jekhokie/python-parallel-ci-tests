@@ -25,6 +25,7 @@ pipeline {
                                 echo "MYSQL DB: ${mysqlDBs[0]}"
                                 sh """
                                     /usr/bin/ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no jenkins@${mysqlDBs[0]} << EOF
+                                        /bin/ls -a                                    && \
                                         /bin/echo Resetting MySQL on: $hostname       && \
                                         /usr/bin/sudo su -                            && \
                                         /bin/echo Snapshots available:                && \
