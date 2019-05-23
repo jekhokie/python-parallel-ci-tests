@@ -18,9 +18,9 @@ if os.path.isfile(cfg_file):
 else:
     config['db_host'] = '10.11.13.40'
     config['db_port'] = '3306'
-    config['db_user'] = 'testdb'
-    config['db_pass'] = 'remote_user'
-    config['db_name'] = 'remote_user_pass'
+    config['db_user'] = 'remote_user'
+    config['db_pass'] = 'remote_user_pass'
+    config['db_name'] = 'testdb'
 
 # create initial sql connector
 db_conn = mysql.connector.connect(
